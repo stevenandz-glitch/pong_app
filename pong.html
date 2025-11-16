@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Steven Hernandez">
+    <link rel="stylesheet" href="pong.css">
+    <script src="pong.js" defer></script>
+    <title> A Pong Game </title>
+</head>
+<body>
+    <main class="main__console">
+        <h1> PONG </h1>
+        <canvas height="300" id="pong"></canvas>
+        <canvas id="controls"></canvas>
+
+        <div class="console__buttons">
+            <button id="play_button"> <p> PLAY </p> </button>
+            <button id="reset_button"> <p> RESET </p> </button>
+        </div>
+
+        <span>
+            <label for="points"> <p> Max Points: </p> </label>
+            <input type="number" name="max_points" id="max_points" min="1" max="10">
+            <button type="submit" id="submit_button"> Enter </button>
+        </span>
+    </main>
+</body>
+</html>

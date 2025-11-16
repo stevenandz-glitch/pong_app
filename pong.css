@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&family=Tagesschrift&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --FONT-FAMILY: 'Bitcount Prop Double', system-ui;
+  --BORDER: 4.1px solid white;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-color: rgb(233, 62, 62);
+  min-height: 100vh;
+  border: 10px solid black;
+  background-size: contain;
+  outline: 5.32px solid black;
+  outline-offset: -17.32px;
+}
+
+h1 {
+  font-size: 3rem;
+  font-family: var(--FONT-FAMILY);
+  font-weight: bolder;
+  margin-top: 3.32%;
+  letter-spacing: 2.32px;
+  padding-left: 2.1%;
+  background-color: black;
+  border: var(--BORDER);
+  border-radius: 4px;
+}
+
+label > p {
+  font-size: 1.2rem;
+  font-family: var(--FONT-FAMILY);
+  font-weight: bolder;
+  letter-spacing: 1.2px;
+  background-color: black;
+  color: white;
+  display: block;
+  width: 105.21%;
+  white-space: nowrap;
+  padding-left: 4.8%;
+  padding-top: 1.2%;
+  text-align: center;
+  border: var(--BORDER);
+  border-radius: 4px;
+}
+
+.main__console {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20.43px;
+}
+
+#pong {
+  border: 10px inset white;
+  border-radius: 10px;
+  width: 91.45vw;
+  height: 45.6vh;
+  box-shadow: 15.3px 10.43px 30px 10.43px black;
+  background-color: black;
+}
+
+#controls {
+  border: 7px solid white;
+  border-radius: 50%;
+  width: 30.43%;
+  height: 15.23vh;
+  background-color: black;
+}
+
+.console__buttons {
+  display: flex;
+}
