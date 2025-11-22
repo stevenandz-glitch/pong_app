@@ -7,20 +7,24 @@
 }
 
 :root {
-  --FONT-FAMILY: 'Bitcount Prop Double', system-ui;
-  --BORDER: 4.1px solid white;
+  --FONT-FAMILY: 'Bitcount', system-ui;
+  --BORDER-WHITE: #9e829c;
+  --BORDER: 4.1px solid var(--BORDER-WHITE);
+  --ONYX: #0c0f0a;
+  --GHOST-WHITE: #f0eff4;
 }
 
 body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  background-color: rgb(233, 62, 62);
+  background-color: var(--ONYX);
   min-height: 100vh;
-  border: 10px solid black;
+  border: 10px solid var(--BORDER-WHITE);
   background-size: contain;
-  outline: 5.32px solid black;
+  outline: 5.32px solid var(--BORDER-WHITE);
   outline-offset: -17.32px;
+  color: var(--GHOST-WHITE);
 }
 
 h1 {
@@ -41,7 +45,6 @@ label > p {
   font-weight: bolder;
   letter-spacing: 1.2px;
   background-color: black;
-  color: white;
   display: block;
   width: 105.21%;
   white-space: nowrap;
@@ -61,16 +64,15 @@ label > p {
 }
 
 #pong {
-  border: 10px inset white;
+  border: 6px solid var(--BORDER-WHITE);
   border-radius: 10px;
   width: 91.45vw;
   height: 45.6vh;
-  box-shadow: 15.3px 10.43px 30px 10.43px black;
   background-color: black;
 }
 
 #controls {
-  border: 7px solid white;
+  border: 7px solid var(--BORDER-WHITE);
   border-radius: 50%;
   width: 30.43%;
   height: 15.23vh;
@@ -79,4 +81,29 @@ label > p {
 
 .console__buttons {
   display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+button {
+  width: 37.32%;
+  height: 5.32vh;
+  font-size: 1.9rem;
+  letter-spacing: 3.45px;
+  font-family: var(--FONT-FAMILY), system-ui;
+  padding-left: 2.3%;
+  background-color: black;
+  color: inherit;
+}
+
+span {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#max_points {
+  width: 10.54vw;
 }

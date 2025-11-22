@@ -39,8 +39,12 @@ const computer = {
 let game_points = 1;
 let game_interval;
 const text_location = pong_game.height / 3;
-const text_family = "Bitcount Prop Double";
-const text_color = "rgb(13, 207, 10)";
+const text_family = "Bitcount";
+const ghost_white = "#f0eff4";
+
+function ControlPadColor(first, second, third) {
+  return `rgb(${first}, ${second}, ${third})`;
+}
 
 function DrawRectangle(x_axis, y_axis, width, height, color) {
   pong_context.fillStyle = color;
@@ -55,9 +59,11 @@ function DrawCircle(x_axis, y_axis, radius, color) {
   pong_context.fill();
 }
 
+control_context.fillStyle = ControlPadColor(255, 5, 5);
+
 function DrawGamePad(x_axis, y_axis, width, height, color) {
-  control_context.fillStyle = color;
   control_context.beginPath();
+  control_context.fillStyle = color;
 
   control_context.moveTo(x_axis, y_axis);
   control_context.lineTo(x_axis + width, y_axis * 2);
@@ -72,12 +78,13 @@ function DrawGamePad(x_axis, y_axis, width, height, color) {
   control_context.scale(1, -1);
   control_context.translate(0, -game_controls.height);
   control_context.lineWidth = 4.34;
-  control_context.strokeStyle = "blue";
+  
+  control_context.strokeStyle = "#9e829c";
   control_context.stroke();
 }
 
 function DrawNet() {
-  for (let count = 0; count < pong_game.height; count++) {
+  for (let count = 0; count < pong_game.height; count+= 15) {
     DrawRectangle(pong_game.width / 2 - 1, count, 2.5, 10, "white");
   }
 }
@@ -154,15 +161,16 @@ function DrawGame() {
 
   if (computer.score === game_points) {
     DrawText(
-        "Computer Won", pong_game.width / 15, text_location, text_color, text_family)
+        "Computer Won", pong_game.width / 12, text_location, ghost_white, text_family)
+    new Audio("sounds/victory.mp3").play();
   } else if (player.score === game_points) {
     DrawText(
-        "Player Won", pong_game.width / 4.5, text_location, text_color, text_family);
+        "Player Won", pong_game.width / 6.5, text_location, ghost_white, text_family);
+    new Audio("sounds/victory.mp3").play();
   }
 
   DrawGamePad(
-    game_controls.width / 2, 17.2, game_controls.width / 3, game_controls.height / 3, "red");
-  
+    game_controls.width / 2, 17.2, game_controls.width / 3, game_controls.height / 3, ghost_white);
 }
 
 function GamePlay() {
@@ -189,7 +197,7 @@ points_btn.addEventListener("click", ()=>{
   user_input.value = 0;
 });
 
-game_controls.addEventListener("mousedown", function (event) {
+game_controls.addEventListener("click", function (event) {
   new Audio("sounds/mouse_clicky.mp3").play();
   let user_touch = game_controls.getBoundingClientRect();
   const direction_btn = event.clientY - user_touch.top;
