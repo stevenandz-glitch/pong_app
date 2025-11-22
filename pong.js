@@ -82,6 +82,65 @@ function DrawNet() {
   }
 }
 
+function ResetBall() {
+  ball.x_axis = pong_game.width / 2;
+  ball.y_axis = pong_game.height / 2;
+  ball.x_velocity *= -1;
+  ball.y_velocity = 5 * (Math.random() > 0.5 ? 1 : -1);
+}
+
+function DrawText(text, x_axis, y_axis, color = "white", font_family = "Tagesschrift") {
+  pong_context.fillStyle = color;
+  pong_context.font = `2.2rem ${font_family}`;
+  pong_context.fillText(text, x_axis, y_axis);
+}
+
+function GameMechanics() {
+  ball.x_axis += ball.x_velocity;
+  ball.y_axis += ball.y_velocity;
+  const ball_touch_top_edge = ball.y_axis - ball.radius < 0;
+  const ball_touch_bottom_edge = ball.y_axis + ball.radius > pong_game.height;
+
+  if (ball_touch_top_edge || ball_touch_bottom_edge) {
+    ball.y_velocity *= -1;
+  }
+
+  let paddle = (ball.x_axis < pong_game.width / 2) ? player : computer;
+
+  function BallTouchPaddle() {
+     const ball_in_paddle_x = ball.x_axis - ball.radius < paddle.x_axis + paddle_width;
+     const ball_touch_front = ball.x_axis + ball.radius > paddle.x_axis;
+     const ball_in_paddle_y = ball.y_axis < paddle.y_axis + paddle.height;
+     const ball_touch_top = ball.y_axis > paddle.y_axis;
+     const ball_touch_bottom = ball.y_axis + ball.radius < paddle.y_axis + paddle.height;
+     return ball_in_paddle_x && ball_touch_front && ball_in_paddle_y && ball_touch_top && ball_touch_bottom;
+  }
+
+  if (BallTouchPaddle()) {
+    ball.x_velocity *= -1;
+    new Audio("sounds/bounce_blip.mp3").play();
+  }
+
+  const computer_scored = ball.x_axis - ball.radius < -60;
+  const player_scored = ball.x_axis + ball.radius > pong_game.width+ 60;
+
+  if (computer_scored) {
+    computer.score++;
+    new Audio("sounds/scored.mp3").play();
+    ResetBall();
+  } else if (player_scored) {
+    player.score++;
+    new Audio("sounds/scored.mp3").play();
+    ResetBall();
+  }
+
+  if (ball.y_axis < computer.y_axis + computer.height / 2) {
+    computer.y_axis -= computer.y_velocity;
+  } else {
+    computer.y_axis += computer.y_velocity;
+  }
+}
+
 function DrawGame() {
   DrawRectangle(0, 0, pong_game.width, pong_game.height, "black");
   DrawRectangle(
@@ -105,3 +164,58 @@ function DrawGame() {
     game_controls.width / 2, 17.2, game_controls.width / 3, game_controls.height / 3, "red");
   
 }
+
+function GamePlay() {
+  GameMechanics();
+
+  if (computer.score === game_points) {
+    clearInterval(game_interval);
+  } else if (player.score === game_points) {
+    clearInterval(game_interval);
+  }
+
+  DrawGame();
+}
+
+points_btn.addEventListener("click", ()=>{
+  let user_input = document.querySelector("#max_points");
+
+  if ((user_input.value < 1) || (user_input.value > 11)) {
+    game_points = 1;
+  } else {
+    game_points = Number(user_input.value);
+  }
+
+  user_input.value = 0;
+});
+
+game_controls.addEventListener("mousedown", function (event) {
+  new Audio("sounds/mouse_clicky.mp3").play();
+  let user_touch = game_controls.getBoundingClientRect();
+  const direction_btn = event.clientY - user_touch.top;
+  user_touch = parseFloat((user_touch.height / 2).toPrecision(2));
+
+  if (direction_btn > user_touch) {
+    player.y_axis += player.y_velocity;
+
+    if ((player.y_axis + player.height) >= pong_game.height) {
+      player.y_axis = pong_game.height - player.height;
+    }
+  } else {
+    player.y_axis -= player.y_velocity;
+
+    if ((player.y_axis - player.height) <= (player.height * -1)) {
+      player.y_axis = 0;
+    }
+  }
+});
+
+play_btn.addEventListener("click", ()=>{
+  game_interval = setInterval(GamePlay, 16.6);
+  play_btn.disabled = true;
+
+  reset_btn.addEventListener("click", ()=>{
+    play_btn.disabled = false;
+    window.location.reload();
+  });
+});
