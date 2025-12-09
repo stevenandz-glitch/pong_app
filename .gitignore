@@ -3,3 +3,10 @@ sounds/
   mouse_clicky.mp3
   scored.mp3
   victory.mp3
+
+images/
+  pong_app.png
+
+planning/
+  button_coordinates.pdf
+  pong_coordinates.pdf

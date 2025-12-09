@@ -170,7 +170,7 @@ function DrawGame() {
   }
 
   DrawGamePad(
-    game_controls.width / 2, 17.2, game_controls.width / 3, game_controls.height / 3, ghost_white);
+    game_controls.width / 2, game_controls.height / 9, game_controls.width / 3, game_controls.height / 3, ghost_white);
 }
 
 function GamePlay() {
