@@ -7,15 +7,15 @@ const points_btn = document.querySelector("#submit_button");
 const pong_context = pong_game.getContext("2d");
 const control_context = game_controls.getContext("2d");
 
-const paddle_width = 10;
-const paddle_height = 100;
+const paddle_width = 20;
+const paddle_height = 220;
 
 const ball = {
   x_axis: pong_game.width / 2,
   y_axis: pong_game.height / 2,
-  radius: 10,
-  x_velocity: 5,
-  y_velocity: 5
+  radius: 15,
+  x_velocity: 10,
+  y_velocity: 10
 };
 
 const player = {
@@ -32,7 +32,7 @@ const computer = {
   y_axis: pong_game.height / 2 - paddle_height / 2,
   width: paddle_width,
   height: paddle_height,
-  y_velocity: 5, 
+  y_velocity: 9.5, 
   score: 0
 };
 
@@ -98,7 +98,7 @@ function ResetBall() {
 
 function DrawText(text, x_axis, y_axis, color = "white", font_family = "Tagesschrift") {
   pong_context.fillStyle = color;
-  pong_context.font = `2.2rem ${font_family}`;
+  pong_context.font = `4rem ${font_family}`;
   pong_context.fillText(text, x_axis, y_axis);
 }
 
@@ -161,7 +161,7 @@ function DrawGame() {
 
   if (computer.score === game_points) {
     DrawText(
-        "Computer Won", pong_game.width / 12, text_location, ghost_white, text_family)
+        "Computer Won", pong_game.width / 9, text_location, ghost_white, text_family)
     new Audio("sounds/victory.mp3").play();
   } else if (player.score === game_points) {
     DrawText(

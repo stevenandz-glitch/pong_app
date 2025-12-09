@@ -10,7 +10,7 @@
   --FONT-FAMILY: 'Bitcount', system-ui;
   --BORDER-WHITE: #9e829c;
   --BORDER: 4.1px solid var(--BORDER-WHITE);
-  --ONYX: #0c0f0a;
+  --ONYX: #F2EDEB;
   --GHOST-WHITE: #f0eff4;
 }
 
@@ -22,7 +22,6 @@ body {
   min-height: 100vh;
   border: 10px solid var(--BORDER-WHITE);
   background-size: contain;
-  outline: 5.32px solid var(--BORDER-WHITE);
   outline-offset: -17.32px;
   color: var(--GHOST-WHITE);
 }
