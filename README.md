@@ -3,7 +3,7 @@ This is a web application programmed in HTML, CSS, and Javascript in which it is
 
 ## Front-end
 
-### 1. HTML
+### HTML
 From the conception of this project, I settled on a design where the game would be controlled by two buttons housed in one control pad. What the buttons do be simple; one makes the user paddle go up, and the other will make it go down. At first, I planned to create a `div` that housed the buttons, each being a `button` element respectively, and from there, it would have been trivial to add simple event listeners. However, though small, I began to have a vision of how the buttons should look like. This would require specific calculations, which inspired me to consider the `canvas` element. This allowed me condence nesting `button` elements inside a single `div` into one `canvas`.
 ```html
 <canvas id="controls"></canvas>
@@ -13,7 +13,7 @@ Here, I will be able to draw my buttons without adding more elements or event li
 <canvas height="600" id="pong" width="600"></canvas>
 ```
 Therefore, I will have two `canvas` elements that are in charge of the overall program functionality. `height` is set to *600* as well as `width` to accomodate the pixel ratio of the screen, meaning that the pixels will be distributed to what the window allows. Adjusting the canvas's inline `height` and `width` increases content sharpness. Furthermore, with the reduction of container elements originally thought for the game itself, I am able to focus on the raw logic instead of fidgeting with **CSS** properties such as `display` or `justify-content`. Continuing further, since the amount of container elements are greatly reduced, it makes the addition of new features less complex, such as adding *start*, and *reset* game functionality along with setting the maximum points. In conclusion, the final **HTML** is condenced, and efficient in emphasizing the organization of important game functionality.
-```html
+```html 
 <canvas height="600" id="pong" width="600"></canvas>
 <canvas id="controls"></canvas>
 
@@ -28,3 +28,6 @@ Therefore, I will have two `canvas` elements that are in charge of the overall p
   <button type="submit" id="submit_button"> Enter </button>
 </span>
 ```
+## Back-end
+
+### Javascript
