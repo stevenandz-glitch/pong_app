@@ -96,7 +96,7 @@ function ResetBall() {
   ball.y_velocity = 5 * (Math.random() > 0.5 ? 1 : -1);
 }
 
-function DrawText(text, x_axis, y_axis, color = "white", font_family = "Tagesschrift") {
+function DrawText(text, x_axis, y_axis, color = "white", font_family = text_family) {
   pong_context.fillStyle = color;
   pong_context.font = `4rem ${font_family}`;
   pong_context.fillText(text, x_axis, y_axis);
