@@ -203,12 +203,12 @@ game_controls.addEventListener("click", function (event) {
     player.y_axis += player.y_velocity;
 
     if ((player.y_axis + player.height) >= pong_game.height) {
-      player.y_axis = pong_game.height - player.height;
+      player.y_axis = pong_game.height - paddle_height;
     }
   } else {
     player.y_axis -= player.y_velocity;
 
-    if ((player.y_axis - player.height) <= (player.height * -1)) {
+    if ((player.y_axis - paddle_height) <= (paddle_height * -1)) {
       player.y_axis = 0;
     }
   }

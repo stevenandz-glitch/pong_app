@@ -22,7 +22,6 @@ body {
   min-height: 100vh;
   border: 10px solid var(--BORDER-WHITE);
   background-size: contain;
-  outline-offset: -17.32px;
   color: var(--GHOST-WHITE);
 }
 
@@ -59,14 +58,16 @@ label > p {
   flex-flow: column nowrap;
   justify-content: space-around;
   align-items: center;
+  height: fit-content;
+  width: fit-content;
   gap: 20.43px;
 }
 
 #pong {
   border: 6px solid var(--BORDER-WHITE);
   border-radius: 10px;
-  width: 91.45vw;
-  height: 45.6vh;
+  width: 91.45%;
+  max-height: 21.23rem;
   background-color: black;
 }
 
@@ -74,15 +75,18 @@ label > p {
   border: 7px solid var(--BORDER-WHITE);
   border-radius: 50%;
   width: 30.43%;
-  height: 15.23vh;
+  height: fit-content;
   background-color: black;
 }
 
 .console__buttons {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
+  height: max-content;
+  gap: 15.21px;
 }
 
 button {
@@ -94,10 +98,11 @@ button {
   padding-left: 2.3%;
   background-color: black;
   color: inherit;
+  border-radius: 20px;
 }
 
 span {
-  width: 100%;
+  min-width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -106,3 +111,32 @@ span {
 #max_points {
   width: 10.54vw;
 }
+
+/*
+@media  screen and (orientation: landscape ) {
+  .main__console {
+    flex-flow: row wrap;
+    margin-top: 3%;
+    align-items: center;
+    background-color: blue;
+    min-height: 75.23vh;
+    min-width: 90.23vw;
+  }
+
+  .console__buttons {
+    width: 50vh;
+    min-height: 75.23vh;
+    background-color: red;
+    flex-flow: column wrap;
+  }
+  
+  h1 {
+    display: none;
+  }
+
+  #pong {
+    max-width: 50.45vw;
+    height: 67vh;
+  }
+}
+*/
