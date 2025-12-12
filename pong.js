@@ -9,6 +9,7 @@ const control_context = game_controls.getContext("2d");
 
 const paddle_width = 20;
 const paddle_height = 220;
+const middle_y = pong_game.height / 2 - paddle_height / 2;
 
 const ball = {
   x_axis: pong_game.width / 2,
@@ -20,18 +21,14 @@ const ball = {
 
 const player = {
   x_axis: 0,
-  y_axis: pong_game.height / 2 - paddle_height / 2,
-  width: paddle_width, 
-  height: paddle_height,
+  y_axis: middle_y,
   y_velocity: 50,
   score: 0
 };
 
 const computer = {
   x_axis: pong_game.width - paddle_width,
-  y_axis: pong_game.height / 2 - paddle_height / 2,
-  width: paddle_width,
-  height: paddle_height,
+  y_axis: middle_y,
   y_velocity: 9.5, 
   score: 0
 };
@@ -151,9 +148,9 @@ function GameMechanics() {
 function DrawGame() {
   DrawRectangle(0, 0, pong_game.width, pong_game.height, "black");
   DrawRectangle(
-    player.x_axis, player.y_axis, player.width, player.height, "white");
+    player.x_axis, player.y_axis, paddle_width, paddle_height, "white");
   DrawRectangle(
-    computer.x_axis, computer.y_axis, computer.width, computer.height, "white");
+    computer.x_axis, computer.y_axis, paddle_width, paddle_height, "white");
   DrawNet();
   DrawCircle(ball.x_axis, ball.y_axis, ball.radius, "white");
   DrawText(player.score, pong_game.width / 7, 50);
