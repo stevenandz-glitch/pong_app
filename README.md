@@ -31,5 +31,29 @@ Therefore, I will have two `canvas` elements that are in charge of the overall p
 ## Back-end
 
 ### Javascript
-I shall begin the thought process behind the back-end logic by first stating the main objects at play. In a **PONG** game, there are three factors that are constantly moving, or objects with dynamic states, those begin the two paddles, and the ball. Realizing this, and seeing them as objects, I then considered their properties. *What do they have in common?*; *What properties allow them to move*? To answer the former, all of the objects need coordinates, X and Y respectively, and a width and height of which the paddles need to be the same. For the latter, the ball will contain a radius and non-static velocity for both X and Y as well as the paddles. What differs between paddles and ball is the motion that is allowed; the ball has more range while the paddles only move up or down. 
-[Button Coordinates](planning/button_coordinates.pdf)
+I shall begin the thought process behind the back-end logic by first stating the main objects at play. In a **PONG** game, there are three factors that are constantly moving, or objects with dynamic states, those begin the two paddles, and the ball. Realizing this, and seeing them as objects, I then considered their properties. *What do they have in common?*; *What properties allow them to move*? To answer the former, all of the objects need coordinates, X and Y respectively, and a width and height of which the paddles need to be the same. For the latter, the ball will contain a radius and non-static velocity for both X and Y as well as the paddles. What differs between paddles and ball is the motion that is allowed; the ball has more range while the paddles only move up and down. On the topic of paddles, they each should have a score property to keep track of points so that the game ends.
+```js
+const ball = {
+  x_axis: pong_game.width / 2,
+  y_axis: pong_game.height / 2,
+  radius: 15,
+  x_velocity: 10,
+  y_velocity: 10
+};
+
+const player = {
+  x_axis: 0,
+  y_axis: middle_y,
+  y_velocity: 50,
+  score: 0
+};
+
+const computer = {
+  x_axis: pong_game.width - paddle_width,
+  y_axis: middle_y,
+  y_velocity: 9.5, 
+  score: 0
+};
+```
+From the observation of both paddle objects, the difference that is striking is the `x_axis` property. The **player** is on the far left of the screen, thus it is natural that the x axis is at 0. The **computer** is on the far right, reaching the maximum width of the screen, however, to keep it in bounds, I must subtract the width of the paddle. 
+
