@@ -32,4 +32,4 @@ Therefore, I will have two `canvas` elements that are in charge of the overall p
 
 ### Javascript
 I shall begin the thought process behind the back-end logic by first stating the main objects at play. In a **PONG** game, there are three factors that are constantly moving, or objects with dynamic states, those begin the two paddles, and the ball. Realizing this, and seeing them as objects, I then considered their properties. *What do they have in common?*; *What properties allow them to move*? To answer the former, all of the objects need coordinates, X and Y respectively, and a width and height of which the paddles need to be the same. For the latter, the ball will contain a radius and non-static velocity for both X and Y as well as the paddles. What differs between paddles and ball is the motion that is allowed; the ball has more range while the paddles only move up or down. 
-![planning/button_coordinates.pdf]("Planning coordinates")
+[Button Coordinates](planning/button_coordinates.pdf)
