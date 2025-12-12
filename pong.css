@@ -9,18 +9,21 @@
 :root {
   --FONT-FAMILY: 'Bitcount', system-ui;
   --BORDER-WHITE: #9e829c;
-  --BORDER: 4.1px solid var(--BORDER-WHITE);
-  --ONYX: #F2EDEB;
+  --BORDER: 4.3px groove var(--BORDER-WHITE);
+  --PALE: #F2EDEB;
   --GHOST-WHITE: #f0eff4;
+  --BACKGROUND-COLOR: black;
+  --TRANSITION: all 0.5s ease-in-out;
 }
 
 body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  background-color: var(--ONYX);
+  justify-content: center;
+  background-color: var(--PALE);
   min-height: 100vh;
-  border: 10px solid var(--BORDER-WHITE);
+  border: 7.5px groove var(--BORDER-WHITE);
   background-size: contain;
   color: var(--GHOST-WHITE);
 }
@@ -32,9 +35,10 @@ h1 {
   margin-top: 3.32%;
   letter-spacing: 2.32px;
   padding-left: 2.1%;
-  background-color: black;
+  background-color: var(--BACKGROUND-COLOR);
   border: var(--BORDER);
   border-radius: 4px;
+  transition: var(--TRANSITION);
 }
 
 label > p {
@@ -42,7 +46,7 @@ label > p {
   font-family: var(--FONT-FAMILY);
   font-weight: bolder;
   letter-spacing: 1.2px;
-  background-color: black;
+  background-color: var(--BACKGROUND-COLOR);
   display: block;
   width: 105.21%;
   white-space: nowrap;
@@ -61,22 +65,24 @@ label > p {
   height: fit-content;
   width: fit-content;
   gap: 20.43px;
+  transition: var(--TRANSITION);
 }
 
 #pong {
-  border: 6px solid var(--BORDER-WHITE);
+  border: var(--BORDER);
   border-radius: 10px;
   width: 91.45%;
   max-height: 21.23rem;
-  background-color: black;
+  background-color: var(--BACKGROUND-COLOR);
+  transition: var(--TRANSITION);
 }
 
 #controls {
-  border: 7px solid var(--BORDER-WHITE);
+  border: var(--BORDER);
   border-radius: 50%;
   width: 30.43%;
-  height: fit-content;
-  background-color: black;
+  height: 40.34%;
+  background-color: var(--BACKGROUND-COLOR);
 }
 
 .console__buttons {
@@ -84,23 +90,28 @@ label > p {
   flex-flow: column nowrap;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
-  height: max-content;
+  min-width: 100%;
+  height: 13rem;
   gap: 15.21px;
+  transition: var(--TRANSITION);
 }
 
 button {
   width: 37.32%;
-  height: 5.32vh;
+  height: 83.32%;
   font-size: 1.9rem;
   letter-spacing: 3.45px;
   font-family: var(--FONT-FAMILY), system-ui;
   padding-left: 2.3%;
-  background-color: black;
+  background-color: var(--BACKGROUND-COLOR);
   color: inherit;
   border-radius: 20px;
+  text-align: center;
 }
 
+button:hover {
+  background-color: rgba(0, 0, 0, 0.67);
+}
 span {
   min-width: 100%;
   display: flex;
@@ -108,35 +119,40 @@ span {
   align-items: center;
 }
 
-#max_points {
-  width: 10.54vw;
+input {
+  width: 10.89%;
+  font-size: 1.3em;
+  font-family: var(--FONT-FAMILY);
+  background-color: var(--BACKGROUND-COLOR);
+  color: inherit;
+  text-align: center;
+  border-radius: 10px;
 }
 
-/*
+
 @media  screen and (orientation: landscape ) {
   .main__console {
     flex-flow: row wrap;
-    margin-top: 3%;
     align-items: center;
-    background-color: blue;
-    min-height: 75.23vh;
-    min-width: 90.23vw;
+    justify-content: center;
   }
 
   .console__buttons {
-    width: 50vh;
-    min-height: 75.23vh;
-    background-color: red;
+    min-width: 50%;
+    min-height: 15.3rem;
     flex-flow: column wrap;
+    justify-content: space-evenly;
   }
   
   h1 {
-    display: none;
+    position: absolute;
+    top: 0;
+    right: 33.32%;
+    font-size: 2.2rem;
+    padding-right: 1%;
   }
 
   #pong {
-    max-width: 50.45vw;
-    height: 67vh;
+    max-width: 42.54%;
   }
 }
-*/
