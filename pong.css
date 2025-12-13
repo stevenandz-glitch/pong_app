@@ -134,7 +134,7 @@ input {
   .main__console {
     flex-flow: row wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .console__buttons {
@@ -147,7 +147,7 @@ input {
   h1 {
     position: absolute;
     top: 0;
-    right: 33.32%;
+    right: 36.32%;
     font-size: 2.2rem;
     padding-right: 1%;
   }

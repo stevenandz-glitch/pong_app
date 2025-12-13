@@ -121,7 +121,7 @@ function GameMechanics() {
 
   if (BallTouchPaddle()) {
     ball.x_velocity *= -1;
-    new Audio("sounds/bounce_blip.mp3").play();
+    new Audio("/sounds/bounce_blip.mp3").play();
   }
 
   const computer_scored = ball.x_axis - ball.radius < -60;
@@ -129,11 +129,11 @@ function GameMechanics() {
 
   if (computer_scored) {
     computer.score++;
-    new Audio("sounds/scored.mp3").play();
+    new Audio("/sounds/scored.mp3").play();
     ResetBall();
   } else if (player_scored) {
     player.score++;
-    new Audio("sounds/scored.mp3").play();
+    new Audio("/sounds/scored.mp3").play();
     ResetBall();
   }
 
@@ -158,11 +158,11 @@ function DrawGame() {
   if (computer.score === game_points) {
     DrawText(
         "Computer Won", pong_game.width / 9, text_location, ghost_white, text_family)
-    new Audio("sounds/victory.mp3").play();
+    new Audio("/sounds/victory.mp3").play();
   } else if (player.score === game_points) {
     DrawText(
         "Player Won", pong_game.width / 6.5, text_location, ghost_white, text_family);
-    new Audio("sounds/victory.mp3").play();
+    new Audio("/sounds/victory.mp3").play();
   }
 
   DrawGamePad(
@@ -194,7 +194,7 @@ points_btn.addEventListener("click", ()=>{
 });
 
 game_controls.addEventListener("click", function (event) {
-  new Audio("sounds/mouse_clicky.mp3").play();
+  new Audio("/sounds/mouse_clicky.mp3").play();
   let user_touch = game_controls.getBoundingClientRect();
   const direction_btn = event.clientY - user_touch.top;
   user_touch = parseFloat((user_touch.height / 2).toPrecision(2));

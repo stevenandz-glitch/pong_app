@@ -10,3 +10,6 @@ images/
 planning/
   button_coordinates.pdf
   pong_coordinates.pdf
+
+include/
+  crow_all.h
