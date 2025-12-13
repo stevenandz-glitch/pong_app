@@ -38,6 +38,7 @@ const text_location = pong_game.height / 3;
 const text_family = "Bitcount";
 const ghost_white = "#f0eff4";
 
+
 function ControlPadColor(first, second, third) {
   return `rgb(${first}, ${second}, ${third})`;
 }
@@ -220,6 +221,9 @@ play_btn.addEventListener("click", ()=>{
 
   reset_btn.addEventListener("click", ()=>{
     play_btn.disabled = false;
-    window.location.reload();
+    document.querySelector("#max_points").value = 0;
+    player.score = 0;
+    computer.score = 0;
+    pong_context.clearRect(0, 0, pong_game.width, pong_game.height);
   });
 });

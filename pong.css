@@ -130,7 +130,7 @@ input {
 }
 
 
-@media  screen and (orientation: landscape ) {
+@media screen and (orientation: landscape ) {
   .main__console {
     flex-flow: row wrap;
     align-items: center;
@@ -154,5 +154,14 @@ input {
 
   #pong {
     max-width: 42.54%;
+  }
+}
+
+@keyframes fade_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -1,4 +1,4 @@
-#include "include/crow_all.h"
+#include "../include/crow_all.h"
 #include <iostream>
 #include <string>
 
@@ -45,5 +45,3 @@ int main() {
   application.port(5500).multithreaded().run();
   return 0;
 }
-
-// run with: g++ server.cc -o server -I include -I ../crud/people_network/include/Crow/include -pthread
