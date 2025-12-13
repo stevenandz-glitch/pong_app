@@ -1,14 +1,24 @@
-self.addEventListener("install", event => {
+const cache_name = "pong-v1";
+
+const ASSETS = [
+  "/",
+  "/index.html",
+  "/style.css",
+  "/script.js",
+  "/sounds/",
+  "/manifest.json"
+];
+
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open("pong-v1").then(cache => 
-      cache.addAll([
-        "/",
-        "/index.html",
-        "/style.css",
-        "/script.js",
-        "/sounds/",
-        "/manifest.json"
-      ])
+    caches.open(cache_name).then(cache => cache.addAll(ASSETS))
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then(response => 
+      response || fetch(event.request)
     )
   );
 });
