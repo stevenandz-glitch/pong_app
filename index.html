@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Steven Hernandez">
-    <link rel="stylesheet" href="pong.css">
-    <script src="pong.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+    <script src="script.js" defer></script>
     <title> Pong Web Application </title>
 </head>
 <body>
@@ -25,5 +26,11 @@
         </span>
       </div>
     </main>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service_worker.js");
+      }
+    </script>
 </body>
 </html>

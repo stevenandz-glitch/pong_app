@@ -17,7 +17,7 @@ const std::string ReadFile(const std::string& path) {
 int main() {
   crow::SimpleApp application;
   CROW_ROUTE(application, "/")([](){
-   const std::string file = ReadFile("pong.html");
+   const std::string file = ReadFile("index.html");
    if (file.empty()) {
      return crow::response(404);
    }

@@ -1,0 +1,9 @@
+{
+  "name" : "PONG",
+  "short_name" : "PONG",
+  "description" : "A pong web game",
+  "start_url" : "/",
+  "scope" : "/",
+  "display" : "standalone",
+  "background_color" : "#030000"
+}
