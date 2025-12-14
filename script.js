@@ -203,7 +203,7 @@ game_controls.addEventListener("click", function (event) {
   if (direction_btn > user_touch) {
     player.y_axis += player.y_velocity;
 
-    if ((player.y_axis + player.height) >= pong_game.height) {
+    if ((player.y_axis + paddle_height) >= pong_game.height) {
       player.y_axis = pong_game.height - paddle_height;
     }
   } else {
@@ -221,9 +221,6 @@ play_btn.addEventListener("click", ()=>{
 
   reset_btn.addEventListener("click", ()=>{
     play_btn.disabled = false;
-    document.querySelector("#max_points").value = 0;
-    player.score = 0;
-    computer.score = 0;
-    pong_context.clearRect(0, 0, pong_game.width, pong_game.height);
+    window.location.reload();
   });
 });

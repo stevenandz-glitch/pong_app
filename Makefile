@@ -1,7 +1,7 @@
 .PHONY: all build run deploy
 
 all:
-	build
+	make build
 
 build:
 	@echo "Building the server"
