@@ -3,7 +3,6 @@
   "short_name" : "Pong",
   "description" : "The classic pong as a web application",
   "start_url" : "./index.html",
-  "scope" : "/",
   "display" : "standalone",
   "background_color" : "#000000",
   "theme_color" : "#000000",
