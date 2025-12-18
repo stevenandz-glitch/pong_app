@@ -1,16 +1,16 @@
 const cache_name = "pong-v1";
 
+const BASE = self.location.pathname.replace(/\/[^\/]+$/, "/");
 const ASSETS = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/script.js",
-  "/sounds/bounce_blip.mp3",
-  "/sounds/mouse_clicky.mp3",
-  "/sounds/scored.mp3",
-  "/sounds/victory.mp3",
-  "/images/pong_game.png",
-  "/manifest.json"
+  BASE + "index.html",
+  BASE + "style.css",
+  BASE + "script.js",
+  BASE + "sounds/bounce_blip.mp3",
+  BASE + "sounds/mouse_clicky.mp3",
+  BASE + "sounds/scored.mp3",
+  BASE + "sounds/victory.mp3",
+  BASE + "images/pong_game.png",
+  BASE + "manifest.json"
 ];
 
 self.addEventListener("install", (event) => {

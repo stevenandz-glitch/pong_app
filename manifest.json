@@ -2,19 +2,19 @@
   "name" : "Classic Pong",
   "short_name" : "Pong",
   "description" : "The classic pong as a web application",
-  "start_url" : "/",
+  "start_url" : "./index.html",
   "scope" : "/",
   "display" : "standalone",
   "background_color" : "#000000",
   "theme_color" : "#000000",
   "icons" : [
     {
-      "src" : "images/pong_game.png",
+      "src" : "/images/pong_game.png",
       "sizes" : "192x192",
       "type" : "image/png"
     },
     {
-      "src" : "images/pong_game.png",
+      "src" : "/images/pong_game.png",
       "sizes" : "512x512",
       "type" : "image/png"
     }

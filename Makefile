@@ -21,14 +21,12 @@ clean:
 	rm -f server.pid
 
 deploy:
-	openssl req -x509 -newkey rsa:204b \
-		-keyout key.pem \
-		-out cert.pm \
-		-days 365 \
-		-nodes
 	make build
 	make run
-	adb reverse tcp:1600 tcp:1600
+	./gradlew assembleDebug
+	adb install -r app/build/outputs/apk/debug/app-debug.apk
+	adb reverse tcp:1700 tcp:1700
 	adb shell am start \
-		-a android.intent.action.VIEW \
-		-d http://localhost:1600
+	  -a android.intent.action.VIEW \
+	  -d https://127.0.0.1:1700
+	adb install app-debug.apk

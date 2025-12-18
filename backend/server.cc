@@ -1,3 +1,4 @@
+#define CROW_ENABLE_SSL
 #include "../include/crow_all.h"
 #include <iostream>
 #include <string>
@@ -59,7 +60,8 @@ int main() {
     response.end();
   });
 
-  application.port(1600).ssl_file("cert.pem", "key.pem").multithreaded().run();
+  
+  application.port(1700).run();
 
   /*ADD MIME TYPE TO MANIFEST!!!
    * EX) {"Content-Type" : "type/file"}
