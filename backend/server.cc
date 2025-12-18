@@ -14,6 +14,23 @@ const std::string ReadFile(const std::string& path) {
     std::istreambuf_iterator<char>());
 }
 
+const std::string GetMimeType(const std::string& path) {
+  if (path.ends_with(".html")) {
+    return "text/html";
+  } else if (path.ends_with(".css")) {
+    return "text/css";
+  } else if (path.ends_with(".js")) {
+    return "application/javascript";
+  } else if (path.ends_with(".json")) {
+    return "application/manifest+json";
+  } else if (path.ends_with(".png")) {
+    return "image/png";
+  } else if (path.ends_with(".mp3")) {
+    return "audio/mpeg";
+  }
+  return "application/octet-stream";
+}
+
 int main() {
   crow::SimpleApp application;
   CROW_ROUTE(application, "/")([](){
@@ -24,24 +41,28 @@ int main() {
    return crow::response{file};
   });
 
-  CROW_ROUTE(application, "/<string>")([](const std::string& page){
-    const std::string file = page;
-    const std::string content = ReadFile(file);
-    if (content.empty()) {
-      return crow::response(404);
+  CROW_ROUTE(application, "/<path>")([](
+    const crow::request&, crow::response& response, std::string path) {
+    if (path.empty()) {
+      path = "index.html";
     }
-    return crow::response({content});
+
+    const std::string content = ReadFile(path);
+    if (content.empty()) {
+      response.code = 404;
+      response.end();
+      return;
+    }
+
+    response.set_header("Content-Type", GetMimeType(path));
+    response.body = content;
+    response.end();
   });
 
-  CROW_ROUTE(application, "/sounds/<string>")([](const std::string& sound){
-    const std::string file = "sounds/" + sound;
-    const std::string content = ReadFile(file);
-    crow::response response;
-    response.body = std::move(content);
-    response.set_header("Content-Type", "audio/mpeg");
-    return response;
-  });
+  application.port(1600).ssl_file("cert.pem", "key.pem").multithreaded().run();
 
-  application.port(5501).multithreaded().run();
+  /*ADD MIME TYPE TO MANIFEST!!!
+   * EX) {"Content-Type" : "type/file"}
+   */
   return 0;
 }

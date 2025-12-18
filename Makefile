@@ -8,7 +8,7 @@ build:
 	$(MAKE) -C backend
 
 run:
-	@echo "Running the server\033";
+	@echo "Running the server";
 	./backend/server & echo $$! > server.pid
 
 stop:
@@ -21,9 +21,14 @@ clean:
 	rm -f server.pid
 
 deploy:
+	openssl req -x509 -newkey rsa:204b \
+		-keyout key.pem \
+		-out cert.pm \
+		-days 365 \
+		-nodes
 	make build
 	make run
-	adb reverse tcp:5500 tcp:5500
+	adb reverse tcp:1600 tcp:1600
 	adb shell am start \
 		-a android.intent.action.VIEW \
-		-d http://localhost:5500
+		-d http://localhost:1600
