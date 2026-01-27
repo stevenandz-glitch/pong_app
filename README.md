@@ -1,4 +1,4 @@
-# Pong Web Application
+# Pong Web Game
 This is a web application programmed in HTML, CSS, and Javascript in which it is inspired by the classic game **Pong**. Here, there are two paddles, each controled by an entity, and the main objective it to be the first to achive a certain number of points before the other where the a point is gained when the ball passes the border. The paddles themselves can be controlled by a player, or a computer. For this project, I decided that the game play should be *player vs. computer*, where one paddle is controlled by the user, and the other is programmed to predict where the ball will go. The main areas of interest for this project will be in **HTML** where I practice using the `canvas` element, and in **Javascript** where I utilize mathematical concepts such as geometry and velocity. While those areas are the topic of discussion, I will acknowledge that this project helped introduce me to `embedded-systems`. Because it is small, there will not be much time spend on the front-end development process, but rather on the back-end logic. 
 
 ## Front-end
@@ -55,5 +55,18 @@ const computer = {
   score: 0
 };
 ```
-From the observation of both paddle objects, the difference that is striking is the `x_axis` property. The **player** is on the far left of the screen, thus it is natural that the x axis is at 0. The **computer** is on the far right, reaching the maximum width of the screen, however, to keep it in bounds, I must subtract the width of the paddle. 
-
+From the observation of both paddle objects, the difference that is striking is the `x_axis` property. The **player** is on the far left of the screen, thus it is natural that the x axis is at 0. The **computer** is on the far right, reaching the maximum width of the screen, however, to keep it in bounds, I must subtract the width of the paddle. Now that the objects are in their place, we can now focus on the game mechanics as it is equally as important. To do so, we can change our previous question of *What properties allow them to move*? to *How will the properties move*? Both paddles are straight forward; in plain, psudo-code terms, translate the vertical axis of the object and if object goes out of bounds, force it to stay at the maximum or miniumum height of the screen. Since the user controls one paddle, the constraints only apply to that specific paddle as shown in the code below.
+```js
+if (direction_btn > user_touch) {
+  player.y_axis += player.y_velocity;
+  if ((player.y_axis + paddle_height) >= pong_game.height) {
+    player.y_axis = pong_game.height - paddle_height;
+  }
+} else {
+  player.y_axis -= player.y_velocity;
+  if ((player.y_axis - paddle_height) <= (paddle_height * -1)) {
+    player.y_axis = 0;
+  }
+}
+```
+The top-level conditional checks if the button is pressed above its center line, and the inner conditonals enforce the constraints respectivly. Continuing further, our next object of concern is the ball. It moves freely, therefore, we must consider the horizontal axis as well. Next to consider is the constraints. *How will a point be generated*? When it crosses the left and right borders of the screen. *What will happen if the ball crosses the top and bottom borders*? This proposal inherently breaks our game as there is no action to take if the ball does cross either border. It will fly off beyond the bounds of the game screen, therefore, we must set a constraint where the ball bounces off the top and bottom borders. *If a point is generated when the ball crosses the left and right borders, how can we stop it from going completely out of bounds and causing the game to endlessly loop?*? Once the ball goes out of scope, we can simply translate its coordinates to the center of the screen. The last constraint to consider is if the ball touched either paddle. 
